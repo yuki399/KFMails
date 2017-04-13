@@ -23,13 +23,14 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons      # KAboutData
     I18n            # KLocalizedString
-    WidgetsAddons   # KMessageBox
+	XmlGui
+	TextWidgets
 )
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 
-set(KFMailsGUI_SRCS main.cpp)
+set(KFMailsGUI_SRCS main.cpp replay.cpp)
 
 add_executable(KFMailsGUI ${KFMailsGUI_SRCS})
 
@@ -38,6 +39,8 @@ target_link_libraries(KFMailsGUI
     KF5::CoreAddons
     KF5::I18n
     KF5::WidgetsAddons
+	KF5::XmlGui
+	KF5::TextWidgets
 )
 
 install(TARGETS KFMailsGUI  ${INSTALL_TARGETS_DEFAULT_ARGS})
